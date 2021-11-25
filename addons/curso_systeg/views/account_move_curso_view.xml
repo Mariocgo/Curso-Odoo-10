@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="account_move_curso_view" model="ir.ui.view">
+            <field name="name">account.move.curso.tree</field>
+            <field name="model">account.move.curso</field>
+            <field name="arch" type="xml">
+                <tree string="Curso en Factura">
+                    <field name="name"/>
+                    <field name="invoice_id"/>
+                    <field name="date_init"/>
+                    <field name="date_end"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_move_curso_form_view" model="ir.ui.view">
+            <field name="name">account.move.curso.form</field>
+            <field name="model">account.move.curso</field>
+            <field name="arch" type="xml">
+                <form string="Curso en Factura">
+                <header>
+                    <button 
+                        name="action_open" 
+                        type="object" 
+                        string="Activar curso" 
+                        states="draft"
+                        class="oe_highlight" 
+                        groups="curso_systeg.group_account_move_curso_manager, curso_systeg.group_account_move_curso_all"
+                    />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field 
+                                name="name"
+                                required="1"
+                            />
+                            <field name="invoice_id"/>
+                            <field name="facilitador" groups="curso_systeg.group_account_move_curso_manager" domain="[('is_facilitador', '=', True)]" />
+                            <field name="supervisor"  domain="[('is_supervisor', '=', True)]" />
+                        </group>
+                        <group>
+                            <field name="date_init"/>
+                            <field name="date_end"/>
+                            <field name="duracion"/>
+                            <field name="costo_hora"/>
+                            <field name="currency_id"/>
+                            <field name="costo_total"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="participantes" string="Participantes">
+                            <field name="participantes">
+                                <tree>
+                                    <field name="curso_id" invisible="1"/>
+                                    <field name="partner_id" />
+                                    <field name="vat" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_move_curso_action" model="ir.actions.act_window">
+            <field name="name">Curso en Factura</field>
+            <field name="res_model">account.move.curso</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Clic para agregar nuevo contenido.
+              </p>
+            </field>
+        </record>
+
+        <menuitem 
+            id="menu_action_account_move_curso_form" 
+            action="curso_systeg.account_move_curso_action" 
+            name="Cursos" 
+            parent="account.menu_finance_receivables" 
+            sequence="1"
+        />
+</odoo>
