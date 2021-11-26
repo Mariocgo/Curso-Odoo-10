@@ -1,0 +1,10 @@
+<odoo>
+<record id="sequence_curso" model="ir.sequence">
+    <field name="name">Sequence Curso</field>
+    <field name="code">account.move.curso</field>
+    <field name="prefix">curso</field>
+    <field eval="1" name="number_next"/>
+    <field eval="1" name="number_increment"/>
+    <field eval="False" name="company_id"/>
+</record>
+</odoo>

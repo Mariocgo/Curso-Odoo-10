@@ -6,6 +6,8 @@
             <field name="arch" type="xml">
                 <tree string="Curso en Factura">
                     <field name="name"/>
+                    <field name="state" />
+                    <field name="purchase_id" />
                     <field name="invoice_id"/>
                     <field name="date_init"/>
                     <field name="date_end"/>
@@ -34,25 +36,28 @@
                         <group>
                             <field 
                                 name="name"
-                                required="1"
+                                readonly="1"
                             />
                             <field name="invoice_id"/>
                             <field name="facilitador" groups="curso_systeg.group_account_move_curso_manager" domain="[('is_facilitador', '=', True)]" />
                             <field name="supervisor"  domain="[('is_supervisor', '=', True)]" />
+                            <field name="is_responsable" />
+                            <field name="purchase_id" />
+                            <field name="categ_id" widget="many2many_tags" options="{'no_create': True}"/>
                         </group>
                         <group>
                             <field name="date_init"/>
                             <field name="date_end"/>
                             <field name="duracion"/>
-                            <field name="costo_hora"/>
-                            <field name="currency_id"/>
+                            <field name="costo_hora" widget="monetary"/>
+                            <field name="currency_id" options="{'no_open': True}"/>
                             <field name="costo_total"/>
                         </group>
                     </group>
                     <notebook>
                         <page name="participantes" string="Participantes">
                             <field name="participantes">
-                                <tree>
+                                <tree editable="bottom">
                                     <field name="curso_id" invisible="1"/>
                                     <field name="partner_id" />
                                     <field name="vat" />

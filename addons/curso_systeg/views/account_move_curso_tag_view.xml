@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Los nombres del id no afecta, puede ser como sea -->
+        <record id="account_move_curso_tag_view" model="ir.ui.view"> 
+            <field name="name">account.move.curso.tag.tree</field>
+            <field name="model">account.move.curso.tag</field>
+            <field name="arch" type="xml">
+                <tree string="Categorias del curso">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_move_curso_tag_form_view" model="ir.ui.view">
+            <field name="name">account.move.curso.tag.form</field>
+            <field name="model">account.move.curso.tag</field>
+            <field name="arch" type="xml">
+                <form string="Curso en Factura">
+                <sheet>
+                    <group>
+                        <group>
+                            <field 
+                                name="name"
+                                required="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_move_curso_tag_action" model="ir.actions.act_window">
+            <field name="name">Categoria del curso</field>
+            <field name="res_model">account.move.curso.tag</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Clic para agregar nuevo contenido.
+              </p>
+            </field>
+        </record>
+
+        <menuitem 
+            id="menu_action_account_move_curso_tag_form" 
+            action="curso_systeg.account_move_curso_tag_action" 
+            name="Categoria" 
+            parent="account.menu_finance_configuration" 
+            sequence="1"
+        />
+</odoo>
