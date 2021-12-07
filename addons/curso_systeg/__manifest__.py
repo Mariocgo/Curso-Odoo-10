@@ -11,7 +11,7 @@
         'purchase',
         ],
     'description': """
-Module for defining analytic accounting object.
+Module for defining analytic accounting object
 ===============================================
     El primer modulazo
     """,
