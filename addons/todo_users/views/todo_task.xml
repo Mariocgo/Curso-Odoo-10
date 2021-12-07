@@ -2,7 +2,7 @@
 <odoo>
 
     <!-- Extend form -->
-    <record id="view_form_todo_task_inherited" model="ir.ui.view">
+    <record id="view_form_todo_task_inherited2" model="ir.ui.view">
       <field name="name">view_form_todo_task_inherited</field>
       <field name="model">todo.task</field>
       <field name="inherit_id" ref="todo_app2.view_form_todo_task"/>

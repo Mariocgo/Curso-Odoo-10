@@ -29,6 +29,10 @@ Podríamos ocultarlo del usuario. Esto puede hacerse estableciendo su atributo i
         <attribute name="invisible">1</attribute> 
         </field> 
 
+<!-- Para el tercer punto, queremos agregar los widgets de red social en la parte inferior del formulario.
+Esto se hace extendiendo la definición de vista de formulario. Podemos reutilizar la vista heredada que
+ ya hemos creado, view_form_todo_task_inherited, y añadirla a sus datos arch: -->
+
         <!-- Open Chatter widgets -->
         <sheet position="after"> 
         <div class="oe_chatter"> 
@@ -74,15 +78,20 @@ para las propias tareas del usuario y las tareas no asignadas a nadie:-->
     </record>
 
       <!-- Modify menu item -->
+      <!-- en esta parte cambiamos el nombre del texto del menú de color negro -->
     <record id="todo_app2.menu_todo_task" model="ir.ui.menu">
         <field name="name">My To-Do</field>
     </record>
 
     <!-- Action to open To-Do Task list -->
+    <!-- esta opción es para que apenas entremos a la addon, nos aparezca de forma predeterminada
+    un filtro seleccionado -->
+
+     <!-- Las acciones tienen un atributo contextual opcional. Puede proporcionar valores 
+     predeterminados para campos de vista y filtros. Lo utilizaremos para activar de forma 
+     predeterminada el filtro Mis tareas -->
     <record model="ir.actions.act_window" id="todo_app2.action_todo_task">
         <field name="context">{'search_default_filter_my_tasks': True}</field>
     </record>
 
 </odoo>
-
-

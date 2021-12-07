@@ -3,6 +3,11 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 class TodoTask(models.Model): 
+# La siguiente línea establece el atributo _name que define el identificador que se utilizará en
+#  Odoo para referirse a este modelo. Toma en cuenta que el nombre real de la clase Python, TodoTask en 
+#  este caso, carece de significado para otros módulos Odoo. El valor _name es lo que se utilizará como 
+#  identificador.
+
 # Para extender un modelo existente, usamos una clase Python con un atributo _inherit. 
 # Esto identifica el modelo a ser extendido. La nueva clase hereda todas las características del 
 # modelo Odoo padre, y solo necesitamos declarar las modificaciones que queremos introducir.
